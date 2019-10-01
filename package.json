@@ -9,6 +9,10 @@
   },
   "author": "dkocsis-emarsys",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dkocsis-emarsys/bamboo.git"
+  },
   "devDependencies": {
     "@babel/core": "7.6.2",
     "@babel/node": "7.6.2",

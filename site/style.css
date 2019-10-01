@@ -11,21 +11,19 @@ html{
 body{
     font-size:16px;
     line-height:24px;
-    margin:auto
+    margin:64px auto
 }
 h1{
     font-size:64px;
     line-height:72px;
     margin-top:24px;
-    margin-bottom:48px;
-    text-align:center
+    margin-bottom:48px
 }
 h2{
     font-size:40px;
     line-height:48px;
     margin-top:24px;
-    margin-bottom:24px;
-    text-align:center
+    margin-bottom:24px
 }
 h3{
     font-size:25px;
@@ -54,8 +52,9 @@ ol ol,ol ul,ul ol,ul ul{
     margin-bottom:0
 }
 hr{
-    border:1px solid;
-    margin:-1px 0
+    border:0;
+    border-bottom:1px solid #e7e9ed;
+    margin:64px 0
 }
 a,b,code,em,i,small,strong{
     line-height:0
@@ -101,21 +100,24 @@ pre[class*=language-javascript]:before{
     -webkit-box-align:center;
     -ms-flex-align:center;
     align-items:center;
+    background:#fff;
+    box-shadow:0 1px 4px 0 rgba(0,0,0,.1);
     display:-webkit-box;
     display:-ms-flexbox;
     display:flex;
-    -webkit-box-orient:vertical;
-    -webkit-box-direction:normal;
-    -ms-flex-direction:column;
-    flex-direction:column;
-    height:192px;
-    -webkit-box-pack:center;
-    -ms-flex-pack:center;
-    justify-content:center;
-    margin:64px 0
+    height:64px;
+    left:0;
+    padding:0 64px;
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:100
 }
 .s-header__logo{
-    height:192px
+    height:48px
+}
+.s-container {
+    padding:64px 0
 }
 .s-content{
     margin:auto;
@@ -130,8 +132,7 @@ pre[class*=language-javascript]:before{
     text-align:right
 }
 .s-docs__title{
-    margin:64px 0;
-    text-align:center
+    margin:32px 0 0
 }
 .s-docs__block{
     display:-webkit-box;
@@ -139,9 +140,6 @@ pre[class*=language-javascript]:before{
     display:flex;
     -ms-flex-wrap:wrap;
     flex-wrap:wrap
-}
-.s-docs__block:nth-child(even){
-    background:#f1f3f4
 }
 .s-docs__block:nth-child(even) .s-docs__right{
     background:#272822
@@ -152,9 +150,12 @@ pre[class*=language-javascript]:before{
 .s-docs__left,.s-docs__right{
     -webkit-box-flex:0;
     -ms-flex:0 0 auto;
-    flex:0 0 auto;
-    padding:64px;
-    width:50%
+    flex:1 1 auto;
+    padding:64px 0;
+    width:100%
+}
+.s-docs__left{
+    padding-bottom:32px
 }
 .s-docs__right{
     -webkit-box-pack:center;
@@ -172,6 +173,12 @@ pre[class*=language-javascript]:before{
 }
 .s-docs__text{
     margin:0
+}
+.s-docs__info{
+    padding:32px;
+    border-left:3px solid #5b99ea;
+    background:#f9fbfe;
+    margin-top:32px
 }
 @media only screen and (max-width:900px){
     .s-header{
