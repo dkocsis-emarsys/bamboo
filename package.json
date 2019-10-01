@@ -26,7 +26,7 @@
     "webpack-dev-server": "3.8.1"
   },
   "dependencies": {
-    "@dkocsis-emarsys/bamboo-state": "1.0.5",
+    "@dkocsis-emarsys/bamboo-state": "1.0.6",
     "lighterhtml": "1.2.1"
   },
   "sideEffects": false
