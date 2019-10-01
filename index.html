@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Bamboo</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./site/resources/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./site/resources/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./site/resources/favicon-16x16.png">
+  <link rel="manifest" href="./site/resources/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism-okaidia.min.css">
+  <link rel="stylesheet" href="./site/style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+</head>
+<body>
+  <div class="s-header">
+    <svg class="s-header__logo" viewBox="0 0 199 149" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0)"><path d="M116.39 16h-10l-1.18 11.45L109 27v8l-4.62.54-2.14 20.9 10.12-1.19L116.39 16zM119.63 62.4L123 62v-8l-2.54.3 3.93-38.3H131v64h-13.18l1.8-17.6zM111.53 63.35l-10.12 1.19L99.82 80h10l1.7-16.65zM94.14 57.4L89 58v8l4.3-.5L91.83 80h-10l4.34-42.31 10.12-1.2-2.14 20.9zM98.38 16l-1.27 12.4L87 29.59 88.4 16h10zM75 31l3.9-.46L80.37 16H67v64h6.82l4.24-41.36L75 39v-8z" fill="#32B543"/><path d="M20.17 103.01h8.57c3.75 0 6.58.56 8.48 1.68 1.93 1.1 2.9 3.01 2.9 5.76 0 1.76-.5 3.23-1.47 4.4a7 7 0 0 1-4.24 2.23v.21c1.26.2 2.4.56 3.4 1.1a5.95 5.95 0 0 1 2.43 2.26c.6.98.89 2.26.89 3.82 0 2.72-.94 4.82-2.82 6.3-1.85 1.49-4.38 2.23-7.6 2.23H20.17v-29.99zm3.78 12.77h5.54c2.58 0 4.34-.4 5.3-1.22.95-.84 1.42-2.07 1.42-3.7 0-1.65-.59-2.82-1.76-3.52-1.15-.73-3-1.1-5.55-1.1h-4.95v9.54zm0 3.15v10.88H30c2.66 0 4.5-.52 5.54-1.56a5.5 5.5 0 0 0 1.55-4.07c0-1.57-.54-2.83-1.63-3.78-1.07-.98-2.99-1.47-5.76-1.47h-5.75zm31.56-8.82c2.74 0 4.77.6 6.09 1.8 1.31 1.21 1.97 3.13 1.97 5.76V133h-2.69l-.71-3.2H60a10.3 10.3 0 0 1-3.1 2.74c-1.07.59-2.55.88-4.46.88a7.93 7.93 0 0 1-5.08-1.6c-1.34-1.09-2.02-2.78-2.02-5.08 0-2.24.89-3.96 2.65-5.16 1.76-1.24 4.48-1.9 8.15-2.02l3.82-.13v-1.34c0-1.88-.4-3.18-1.22-3.9a4.98 4.98 0 0 0-3.44-1.1c-1.18 0-2.3.18-3.36.55-1.07.33-2.06.73-2.98 1.17l-1.14-2.77c.98-.53 2.14-.98 3.49-1.34 1.34-.4 2.74-.59 4.2-.59zM59.9 122l-3.31.12c-2.8.11-4.75.56-5.84 1.35a3.88 3.88 0 0 0-1.6 3.31c0 1.26.38 2.19 1.14 2.78.78.58 1.78.88 2.98.88 1.9 0 3.49-.52 4.75-1.56 1.26-1.06 1.89-2.68 1.89-4.87V122zm35.31-11.93c2.55 0 4.45.66 5.71 1.97 1.26 1.29 1.9 3.39 1.9 6.3V133h-3.66v-14.49c0-3.56-1.53-5.33-4.58-5.33-2.18 0-3.75.63-4.7 1.89-.93 1.26-1.39 3.09-1.39 5.5V133h-3.65v-14.49c0-3.56-1.54-5.33-4.62-5.33-2.27 0-3.84.7-4.7 2.1-.88 1.4-1.31 3.41-1.31 6.04V133h-3.7v-22.51h2.99l.54 3.06h.21a6.46 6.46 0 0 1 2.82-2.6 8.6 8.6 0 0 1 3.82-.88c3.53 0 5.82 1.26 6.89 3.78h.2a7 7 0 0 1 3.07-2.86 9.7 9.7 0 0 1 4.16-.92zm18.25-8.99v7.77c0 .95-.03 1.85-.08 2.69-.03.81-.07 1.45-.13 1.93h.21a7.84 7.84 0 0 1 2.65-2.4 8.6 8.6 0 0 1 4.32-.96c2.8 0 5.04.98 6.72 2.94 1.71 1.93 2.57 4.83 2.57 8.7 0 3.86-.86 6.77-2.57 8.73a8.48 8.48 0 0 1-6.72 2.94 8.6 8.6 0 0 1-4.32-.97 8.26 8.26 0 0 1-2.65-2.3h-.3l-.75 2.85h-2.64v-31.92h3.7zm6.34 12.1c-2.38 0-4.03.68-4.95 2.05-.93 1.38-1.39 3.5-1.39 6.39v.17c0 2.77.45 4.9 1.35 6.38.92 1.46 2.61 2.18 5.08 2.18 2.01 0 3.51-.74 4.5-2.22 1-1.49 1.5-3.63 1.5-6.43 0-5.68-2.03-8.52-6.09-8.52zm35.38 8.52c0 3.73-.95 6.61-2.86 8.65-1.87 2.05-4.42 3.07-7.64 3.07-1.99 0-3.77-.45-5.34-1.34a9.72 9.72 0 0 1-3.65-4c-.9-1.76-1.34-3.89-1.34-6.38 0-3.72.93-6.6 2.81-8.6 1.88-2.02 4.42-3.03 7.64-3.03 2.05 0 3.84.46 5.38 1.38a9.1 9.1 0 0 1 3.65 3.95c.9 1.71 1.35 3.81 1.35 6.3zm-17.01 0c0 2.66.52 4.78 1.55 6.34 1.07 1.54 2.75 2.31 5.04 2.31 2.27 0 3.94-.77 5-2.3 1.06-1.57 1.6-3.69 1.6-6.35 0-2.66-.54-4.74-1.6-6.26-1.06-1.5-2.74-2.26-5.04-2.26s-3.96.75-5 2.26c-1.03 1.52-1.55 3.6-1.55 6.26zm42.44 0c0 3.73-.95 6.61-2.86 8.65-1.87 2.05-4.42 3.07-7.64 3.07-1.99 0-3.77-.45-5.34-1.34a9.72 9.72 0 0 1-3.65-4c-.9-1.76-1.34-3.89-1.34-6.38 0-3.72.93-6.6 2.81-8.6 1.88-2.02 4.42-3.03 7.64-3.03 2.05 0 3.84.46 5.38 1.38a9.1 9.1 0 0 1 3.65 3.95c.9 1.71 1.35 3.81 1.35 6.3zm-17.01 0c0 2.66.52 4.78 1.55 6.34 1.07 1.54 2.75 2.31 5.04 2.31 2.27 0 3.94-.77 5-2.3 1.06-1.57 1.6-3.69 1.6-6.35 0-2.66-.54-4.74-1.6-6.26-1.06-1.5-2.74-2.26-5.04-2.26s-3.96.75-5 2.26c-1.03 1.52-1.55 3.6-1.55 6.26z" fill="#000"/></g><defs><clipPath id="clip0"><path fill="#fff" d="M0 0h199v149H0z"/></clipPath></defs></svg>
+  </div>
+
+  <div class="s-container">
+    <div class="s-content">
+      <h2>What is Bamboo?</h2>
+
+      <p>Bamboo is a simple extension of the base HTMLElement class. It helps developers to easily create feature rich web components.</p>
+
+      <p>Features:</p>
+
+      <ul>
+        <li>Unified attribute and property handling</li>
+        <li>State value transforming</li>
+        <li>Auto-bind property to state</li>
+        <li>Communication between parent and child components</li>
+        <li>Lighterhtml based templating with multi-template system</li>
+        <li>Local and global state management</li>
+        <li>Extra callbacks to never miss a moment</li>
+        <li>And much more...</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="s-docs">
+    <h2 class="s-docs__title">Documentation</h2>
+
+    <h3 class="s-docs__title">Attributes, properties and basic templating</h3>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">Add <b>observedAttributes</b> getter to the component to listen on a list of attributes or properties.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          static get observedAttributes() {
+            return ['value'];
+          }
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">Every component has built in state management and you can easily make a connection between properties and state by defining <b>boundProperties</b> getter.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          static get boundProperties() {
+            return ['value'];
+          }
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">Templating has never been easier than it is now with Bamboo; just define a <b>template</b> getter on the component.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          get template() {
+            return html => html`
+              The value is: &lt;b&gt;${component._state.get('value')}&lt;/b&gt;
+            `;
+          }
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">The component can add classes to itself with the <b>className</b> option. The parameter is a string and multiple classes can be append with a space between classes.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          super.init({
+            className: 'my-example-1 my-example-1--dark'
+          });
+        </code></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="s-docs">
+    <h3 class="s-docs__title">Advanced templating</h3>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">As you could see above a <b>simple template</b> looks like this.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          get template() {
+            return html => html`&lt;div&gt;Hello World!&lt;/div&gt;`;
+          }
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text"><b>Multiple templates</b> could be defined by using an object in the template getter. You can set various options here.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          get template() {
+            return [
+              {
+                name: 'hello',
+                markup: html => html`&lt;div&gt;Hello&lt;/div&gt;`,
+                container: this._templater.parseHTML('&lt;div class="hello-container"&gt;&lt;/div&gt;'),
+                autoAppendContainer: true
+              },
+              {
+                name: 'world',
+                markup: html => html`&lt;div&gt;World!&lt;/div&gt;`,
+                container: this._templater.parseHTML('&lt;div class="world-container"&gt;&lt;/div&gt;'),
+                autoAppendContainer: true
+              }
+            ];
+          }
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">Templates can easily connect to eachother using the <b>_templater</b>'s render method.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          get template() {
+            return [
+              {
+                name: 'hello',
+                markup: html => html`&lt;div&gt;Hello ${this._templater.render('world')}!&lt;/div&gt;`,
+                container: this.constructor._parseHTML('&lt;div class="hello-container"&gt;&lt;/div&gt;'),
+                autoAppendContainer: true
+              },
+              {
+                name: 'world',
+                markup: html => html`&lt;strong&gt;World&lt;/strong&gt;`
+              }
+            ];
+          }
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">By default, templates are append to the component. It can be changed to <b>prepend</b> instead.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          get template() {
+            return [
+              {
+                name: 'hello',
+                markup: html => html`&lt;div&gt;Hello&lt;/div&gt;`,
+                container: this._templater.parseHTML('&lt;div class="hello-container"&gt;&lt;/div&gt;'),
+                autoAppendContainer: true,
+                prepend: true
+              }
+            ];
+          }
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">Another interesting and useful part of the templating system is the ability to <b>define templates in the DOM</b>. State variables can be used as well. In this case, be sure to <b>define a container</b> too.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-html">
+          &lt;my-component&gt;
+            &lt;template&gt;Hello ${value}!&lt;/template&gt;
+          &lt;/my-component&gt;
+        </code></pre>
+
+        <pre><code class="language-javascript">
+          get template() {
+            return [
+              {
+                name: 'hello',
+                markup: this.querySelector('template'),
+                container: this._templater.parseHTML('&lt;div&gt;&lt;/div&gt;'),
+                autoAppendContainer: true
+              }
+            ];
+          }
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">Markup option can be a <b>selector</b> too. This way your components can use the same template defined outside.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-html">
+          &lt;template id="my-template"&gt;Hello ${value}!&lt;/template&gt;
+
+          &lt;my-component&gt;&lt;/my-component&gt;
+        </code></pre>
+
+        <pre><code class="language-javascript">
+          get template() {
+            return [
+              {
+                name: 'hello',
+                markup: '#my-template'
+              }
+            ];
+          }
+        </code></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="s-docs">
+    <h3 class="s-docs__title">Communication between parent and child</h3>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">First of all, in the parent component's constructor you have to set <b>listenChildren</b> option to <i>true</i>. It will prepares the parent to be able to receive events from children.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          super.init({
+            listenChildren: true
+          });
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">You have to do almost the same thing with the child component, except the option called <b>notifyParent</b>. This will make the component send events on <i>connect, disconnect and state changes</i>.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          super.init({
+            notifyParent: true
+          });
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">In the parent component, a new callback can be used for handling the events, <b>childrenChangedCallback</b>. This callback gives back the whole list of connected children. What you doing with this data is up to you. In this example we will use it to store the child's value from it's state.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          childrenChangedCallback(collection) {
+            const childrenList = collection.get();
+
+            const items = childrenList.map(child => {
+              this._state.set('childValue', child.state.value);
+            });
+          }
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">A parent can have multiple different kind of children, and because of that the <b>collection</b> can give back them separately, if you want. Only thing you have to do is defining a <b>first parameter</b> with a tag name.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          const childrenList = collection.get('my-example-2-child');
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">If you don't want to notify the parent on every state change you can define it in the <b>boundProperties</b>. It's useful when the parent sets this value on the component, so it won't report back the change.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          static get boundProperties() {
+            return [
+              {
+                name: 'value',
+                options: {
+                  triggerCallback: false
+                }
+              }
+            ];
+          }
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">Another interesting option in the <b>boundProperties</b> is that you can tell the component to store the value with a different name in state.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          static get boundProperties() {
+            return [
+              {
+                name: 'value',
+                as: 'stateValue'
+              }
+            ];
+          }
+        </code></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="s-docs">
+    <h3 class="s-docs__title">Event handling</h3>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">Event handling is always something, what causing problems and makes our code much complex. With Bamboo, this problem becomes much less painful. You can define an <b>eventHandlers</b> getter.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          static get eventHandlers() {
+            return {
+              ':click': '_onClick'
+            }
+          }
+
+          _onClick(event) {
+            // Do something here...
+          }
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">Event handlers can be created through templates too using <b>data-handler</b> attribute and the event binding to the context.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          static get eventHandlers() {
+            return {
+              'button:click': '_onButtonClick'
+            }
+          }
+
+          get template() {
+            return html => html`
+              &lt;button data-handler="button" onclick="${this}" &gt;Click Me!&lt;/button&gt;
+            `;
+          }
+
+          _onButtonClick(event) {
+            // Do something here...
+          }
+        </code></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="s-docs">
+    <h3 class="s-docs__title">State mangement</h3>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">Every component has it's own <b>state</b>.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          this._state.set('value', 1);         // Sets value on local state
+          this._state.get('value');            // Gets value from local state
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">You can pass <b>options to the state</b> on set.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          this._state.set('value', 1, {
+            triggerCallback: false,     // Won't call the attached callbacks
+            triggerRender: false        // Won't call render function
+          });
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">A function can be also passed as value. Perfect for incrementing/decrementing values.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          this._state.set('value', value => value + 2);
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">With the awesome <b>subscription</b> system, you will always know, what's happening.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          this._state.subscribe('value', console.log);
+          this._state.set('value', 1); // Logs '1, "value"'
+
+          // Defining multiple at once with an array
+          this._state.subscribe(['firstName', 'lastName'], console.log);
+          this._state.set('firstName', 1); // Logs '1, "value"'
+          this._state.set('lastName', 2); // Logs '2, lastName"'
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">Every subscription comes with an <b>unsubscribe</b> method.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          const subscription = this._state.subscribe('value', console.log);
+          this._state.set('value', 1); // Logs '1, "value"'
+          subscription.unsubscribe();
+          this._state.set('value', 1); // Logs nothing
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">It has the ability to <b>nest values</b>.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          this._state.set('group.value', 1);
+
+          this._state.get('group.value');   // Gets 1
+          this._state.get('group');         // Gets { value: 1 }
+          this._state.get();                // Ultimately gets { group: { value: 1 } }
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">State values can be formatted. Basically, there is two ways of defining it. You can use the <b>stateOptions</b> getter or calling the <b>setOptions()</b> function on state.<br>Transforming has some predefined options, these are <i>number, integer, float, boolean, json</i>. When using one of these, <b>transformFunction</b> won't be called.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          static get stateOptions() {
+            return {
+              value: {
+                type: 'custom',
+                transformFunction: value => Number(value).toFixed(1)
+              }
+            }
+          }
+
+          /* OR */
+
+          this._state.setOptions('value', {
+            type: 'custom',
+            transformFunction: value => Number(value).toFixed(1)
+          });
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">If you defined a default value for the state variable, you can access it with calling <b>getDefaultValue()</b> function.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          this._state.setOptions('value', {
+            defaultValue: 1
+          });
+
+          ...
+
+          this._state.getDefaultValue('value'); // Gets 1
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">State options can be defined through a static method too, called <b>stateOptions</b>.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          static get stateOptions() {
+            return {
+              value: {
+                defaultValue: 'Default Value'
+              }
+            };
+          }
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text"><b>Global state</b> is available in every instance and work exactly like the default component state.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+          this._globalState.set('value', 1);  // Sets 1
+          this._globalState.get('value');     // Gets 1
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text"><b>Prefixed global state</b> is useful, if you want to render only when a subset of state changed.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+            init() {
+              super.init({
+                watchGlobalState: 'subset' // or an array ['subset1, subset2']
+              });
+            }
+
+            ...
+
+            this._globalState.set('subset.value');  // Triggers rendering in all component uses this prefix
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="s-docs__block">
+      <div class="s-docs__left">
+        <p class="s-docs__text">Global state couldn't be true global, if you can't access it from anywhere. The whole object is available on the <b>window</b>.</p>
+      </div>
+      <div class="s-docs__right">
+        <pre><code class="language-javascript">
+            window.smartComponent.globalState.value = 5; // Calls rendering of course
+            window.smartComponent.globalState.value; // 5
+        </code></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="./index.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+node_modules/
+.idea/
+.projectile
+*.log
+.DS_Store
+yarn.lock
+.env
+package-lock.json
+slnx.sqlite
