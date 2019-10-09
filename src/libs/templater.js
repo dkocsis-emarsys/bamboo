@@ -53,28 +53,13 @@ class Templater {
   renderAll() {
     this._templates.forEach(template => {
       if (template.markup && template.container) {
-        render(template.container, this.render(template.name));
+        render(template.container, this._render(template.name));
       }
     });
   }
 
   render(templateName = '_default') {
-    const markup = this._templates.find(template => template.name === templateName).markup;
-
-    if (typeof markup === 'function') {
-      return markup.bind(this._context, html);
-    } else if (typeof markup === 'object' && markup) {
-      const markupElement = markup.nodeName === 'TEMPLATE' ? markup.content : markup;
-
-      return this.buildFromTemplate(markupElement);
-    } else if (typeof markup === 'string') {
-      const markupSelector = document.querySelector(markup);
-      const markupElement = markupSelector.nodeName === 'TEMPLATE' ? markupSelector.content : markupSelector;
-
-      return this.buildFromTemplate(markupElement);
-    }
-
-    return () => null;
+    return this._render(templateName)();
   }
 
   getContainer(templateName = '_default') {
@@ -85,7 +70,7 @@ class Templater {
     this._observeTemplate(template);
 
     return render => {
-      const innerHTML = [].map.call(template.childNodes, x => x.outerHTML).join('');
+      const innerHTML = [].map.call(template.childNodes, child => child.nodeType === 3 ? child.textContent : child.outerHTML).join('');
 
       const variableRegexp = /(\$\{[\w\.]+\})/g
       const templateValues = innerHTML.split(variableRegexp).reduce((values, item) => {
@@ -108,6 +93,29 @@ class Templater {
 
       return html(...output);
     };
+  }
+
+  hasMarkup(templateName) {
+    return !!this._templates.find(template => template.name === templateName).markup;
+  }
+
+  _render(templateName = '_default') {
+    const markup = this._templates.find(template => template.name === templateName).markup;
+
+    if (typeof markup === 'function') {
+      return markup.bind(this._context, html);
+    } else if (typeof markup === 'object' && markup) {
+      const markupElement = markup.nodeName === 'TEMPLATE' ? markup.content : markup;
+
+      return this.buildFromTemplate(markupElement);
+    } else if (typeof markup === 'string') {
+      const markupSelector = document.querySelector(markup);
+      const markupElement = markupSelector.nodeName === 'TEMPLATE' ? markupSelector.content : markupSelector;
+
+      return this.buildFromTemplate(markupElement);
+    }
+
+    return () => null;
   }
 
   _observeTemplate(template) {
