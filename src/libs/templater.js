@@ -50,16 +50,16 @@ class Templater {
     });
   }
 
+  render(templateName = '_default') {
+    return this._render(templateName);
+  }
+
   renderAll() {
     this._templates.forEach(template => {
       if (template.markup && template.container) {
         render(template.container, this._render(template.name));
       }
     });
-  }
-
-  render(templateName = '_default') {
-    return this._render(templateName)();
   }
 
   getContainer(templateName = '_default') {
@@ -95,8 +95,13 @@ class Templater {
     };
   }
 
-  hasMarkup(templateName) {
+  hasMarkup(templateName = '_default') {
     return !!this._templates.find(template => template.name === templateName).markup;
+  }
+
+  setMarkup(templateName = '_default', value) {
+    this._templates.find(template => template.name === templateName).markup = value;
+    this._context.contentChangedCallback();
   }
 
   _render(templateName = '_default') {
