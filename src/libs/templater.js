@@ -69,27 +69,14 @@ class Templater {
   buildFromTemplate(template) {
     this._observeTemplate(template);
 
-    return render => {
-      const innerHTML = [].map.call(template.childNodes, child => child.nodeType === 3 ? child.textContent : child.outerHTML).join('');
+    return () => {
+      const innerHTML = Array.from(template.childNodes)
+        .map(child => child.nodeType === 3 ? child.textContent : child.outerHTML)
+        .join('')
+        .replace(/\${([^}]*)}/g, (match, variable) => this._context._state.get(variable));
 
-      const variableRegexp = /(\$\{[\w\.]+\})/g
-      const templateValues = innerHTML.split(variableRegexp).reduce((values, item) => {
-        if ('$' === item[0] && '{' === item[1] && '}' === item.slice(-1)) {
-          values.keys.push(item.slice(2, -1));
-        } else {
-          values.markup.push(item);
-        }
-
-        return values;
-      }, { markup: [], keys: [] });
-
-      templateValues.id = ':' + templateValues.markup.join().trim();
-
-      const output = [
-        templateValues.markup,
-        ...templateValues.keys.map(key => this._context._state.get(key))
-      ];
-      output.raw = { value: templateValues.markup };
+      const output = [[innerHTML]];
+      output.raw = { value: [innerHTML] };
 
       return html(...output);
     };
