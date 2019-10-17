@@ -167,9 +167,6 @@ pre[class*=language-terminal]:before {
 h2.s-docs__title {
     margin-top: 64px
 }
-h3.s-docs__title {
-    margin-bottom: 32px
-}
 .s-docs__block {
     display: flex;
     flex-wrap: wrap
@@ -184,6 +181,7 @@ h3.s-docs__title {
     width: 100%
 }
 .s-docs__left {
+    margin-top: 32px;
     padding-bottom: 32px;
     padding-top: 0
 }

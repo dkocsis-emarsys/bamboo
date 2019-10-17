@@ -122,6 +122,8 @@ class Templater {
   }
 
   _cleanUpContainer() {
+    if (!this._templates.length) { return; };
+
     const containers = this._context.querySelectorAll('[data-render-container]');
     Array.from(containers).forEach(node => node.parentNode.removeChild(node));
 

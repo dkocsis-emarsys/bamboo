@@ -47,7 +47,7 @@
 
       <blockquote class="s-docs__info">
         <h4 style="margin:0 0 24px;">What's with the name?</h4>
-        Since bamboo is the perfect combination of strength and flexibility, it has come to represent harmony and balance in one's life. As such, it is considered lucky in many Asian cultures. In fact, many people give bamboo as a house warming gift to bring good health to the recipient.
+        Since bamboo is the <b>perfect combination of strength and flexibility</b>, it has come to represent <b>harmony</b> and <b>balance</b> in one's life. As such, it is considered <b>lucky</b> in many Asian cultures. In fact, many people give bamboo as a house warming gift to bring <b>good health</b> to the recipient.
       </blockquote>
 
       <div class="s-docs">
@@ -160,6 +160,53 @@
           </div>
         </div>
 
+        <div class="s-docs__block">
+          <div class="s-docs__left">
+            <p class="s-docs__text"><b>Not all option needed.</b> You can create only the markup, then render it later anywhere you want.</p>
+          </div>
+          <div class="s-docs__right">
+            <pre><code class="language-javascript">
+              get template() {
+                return [
+                  {
+                    name: 'hello',
+                    markup: html`&lt;div&gt;Hello!&lt;/div&gt;`
+                  }
+                ];
+              }
+
+              ...
+
+              // This gives back a method, what you have to call to get a documentFragment
+              const helloTemplate = this._templater.render('hello');
+              const fragment = helloTemplate();
+            </code></pre>
+          </div>
+        </div>
+
+        <div class="s-docs__block">
+          <div class="s-docs__left">
+            <p class="s-docs__text">You can check if the markup of a template exists. This is useful exspecially when you have <b>optional dynamic templates</b>.</p>
+            <blockquote class="s-docs__info">With <b>this._templater.setMarkup(templateName:string, markup:any)</b> function you can change the markup of a template anytime.</blockquote>
+          </div>
+          <div class="s-docs__right">
+            <pre><code class="language-javascript">
+              get template() {
+                return [
+                  {
+                    name: 'hello',
+                    markup: this.querySelector('[data-label]')
+                  }
+                ];
+              }
+
+              ...
+
+              // Gives back true, if the markup has been set
+              this._templater.hasMarkup('hello');
+            </code></pre>
+          </div>
+        </div>
 
         <div class="s-docs__block">
           <div class="s-docs__left">
