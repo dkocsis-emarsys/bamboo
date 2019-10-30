@@ -1,6 +1,6 @@
 {
   "name": "@dkocsis-emarsys/bamboo",
-  "version": "3.1.2",
+  "version": "3.2.0",
   "description": "Bamboo is a multipurpose, easy to use extension of the base HTMLElement class.",
   "main": "dist/index.js",
   "scripts": {
@@ -15,26 +15,26 @@
     "url": "git+https://github.com/dkocsis-emarsys/bamboo.git"
   },
   "devDependencies": {
-    "@babel/core": "7.6.2",
-    "@babel/node": "7.6.2",
-    "@babel/preset-env": "7.6.2",
+    "@babel/core": "7.6.4",
+    "@babel/node": "7.6.3",
+    "@babel/preset-env": "7.6.3",
     "babel-loader": "8.0.6",
-    "browserslist": "4.7.0",
+    "browserslist": "4.7.2",
     "chai": "4.2.0",
     "clean-webpack-plugin": "3.0.0",
-    "core-js": "3.2.1",
-    "mocha": "6.2.1",
+    "core-js": "3.3.5",
+    "mocha": "6.2.2",
     "sinon": "7.5.0",
     "sinon-chai": "3.3.0",
     "wct-mocha": "1.0.1",
     "web-component-tester": "6.9.2",
-    "webpack": "4.41.0",
+    "webpack": "4.41.2",
     "webpack-cli": "3.3.9",
-    "webpack-dev-server": "3.8.1"
+    "webpack-dev-server": "3.9.0"
   },
   "dependencies": {
     "@dkocsis-emarsys/bamboo-state": "1.0.6",
-    "lighterhtml": "1.2.1"
+    "lighterhtml": "1.2.2"
   },
   "sideEffects": false
 }

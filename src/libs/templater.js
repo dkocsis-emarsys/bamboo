@@ -1,4 +1,4 @@
-import { html, render } from 'lighterhtml';
+import { html, svg, render } from 'lighterhtml';
 
 class Templater {
   constructor(context) {
@@ -95,7 +95,7 @@ class Templater {
     const markup = this._templates.find(template => template.name === templateName).markup;
 
     if (typeof markup === 'function') {
-      return markup.bind(this._context, html);
+      return markup.bind(this._context, html, svg);
     } else if (typeof markup === 'object' && markup) {
       const markupElement = markup.nodeName === 'TEMPLATE' ? markup.content : markup;
 
