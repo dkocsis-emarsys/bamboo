@@ -515,11 +515,11 @@
 
         <div class="s-docs__block">
           <div class="s-docs__left">
-            <p class="s-docs__text">A function can be also passed as value. Perfect for incrementing/decrementing values.</p>
+            <p class="s-docs__text">A transform function can be also passed as value. Perfect for incrementing/decrementing values.</p>
           </div>
           <div class="s-docs__right">
             <pre><code class="language-javascript">
-              this._state.set('value', value => value + 2);
+              this._state.set('value', value => value + 2, { isTransformFunction: true });
             </code></pre>
           </div>
         </div>
