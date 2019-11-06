@@ -1,6 +1,6 @@
 {
   "name": "@dkocsis-emarsys/bamboo",
-  "version": "3.2.1",
+  "version": "4.0.0",
   "description": "Bamboo is a multipurpose, easy to use extension of the base HTMLElement class.",
   "main": "dist/index.js",
   "scripts": {

@@ -10,7 +10,7 @@ export default class TestTemplate2 extends Bamboo {
       name: 'sample',
       markup: html => html`<div>Hello World ${this._state.get('value')}!</div>`,
       container: this._templater.parseHTML('<div class="container"></div>'),
-      autoAppendContainer: true,
+      autoAppend: true,
       prepend: true
     }];
   }

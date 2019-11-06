@@ -15,7 +15,7 @@ class Templater {
         name: '_default',
         markup: templates,
         container: this._context,
-        autoAppendContainer: true
+        autoAppend: true
       }];
     }
   }
@@ -31,7 +31,7 @@ class Templater {
       if (template.container && template.container !== this._context) {
         template.container.setAttribute('data-render-container', '');
 
-        if (!template.autoAppendContainer) { return; }
+        if (!template.autoAppend) { return; }
 
         if (template.prepend) {
           this._context.insertAdjacentElement('afterbegin', template.container);

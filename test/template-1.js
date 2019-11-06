@@ -19,6 +19,6 @@ export default class TestTemplate1 extends Bamboo {
   }
 
   _onIncreaseClick() {
-    this._state.set('value', value => ++value);
+    this._state.set('value', value => ++value, { isTransformFunction: true });
   }
 }

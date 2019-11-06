@@ -23,6 +23,8 @@ export default class TestBoundProperties2 extends Bamboo {
   }
 
   renderCallback() {
+    super.renderCallback();
+
     if (!this._state.get('triggerRender')) { return; }
 
     this.textContent = this._state.get('triggerRender');
