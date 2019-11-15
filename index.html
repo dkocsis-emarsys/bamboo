@@ -152,7 +152,7 @@
                     name: 'hello',
                     markup: templateFromFile,
                     container: document.createElement('div'),
-                    autoAppendContainer: true
+                    autoAppend: true
                   }
                 ];
               }
@@ -221,13 +221,13 @@
                     name: 'hello',
                     markup: html => html`&lt;div&gt;Hello&lt;/div&gt;`,
                     container: this._templater.parseHTML('&lt;div class="hello-container"&gt;&lt;/div&gt;'),
-                    autoAppendContainer: true
+                    autoAppend: true
                   },
                   {
                     name: 'world',
                     markup: html => html`&lt;div&gt;World!&lt;/div&gt;`,
                     container: this._templater.parseHTML('&lt;div class="world-container"&gt;&lt;/div&gt;'),
-                    autoAppendContainer: true
+                    autoAppend: true
                   }
                 ];
               }
@@ -247,7 +247,7 @@
                     name: 'hello',
                     markup: html => html`&lt;div&gt;Hello ${this._templater.render('world')}!&lt;/div&gt;`,
                     container: this._templater.parseHTML('&lt;div class="hello-container"&gt;&lt;/div&gt;'),
-                    autoAppendContainer: true
+                    autoAppend: true
                   },
                   {
                     name: 'world',
@@ -271,7 +271,7 @@
                     name: 'hello',
                     markup: html => html`&lt;div&gt;Hello&lt;/div&gt;`,
                     container: this._templater.parseHTML('&lt;div class="hello-container"&gt;&lt;/div&gt;'),
-                    autoAppendContainer: true,
+                    autoAppend: true,
                     prepend: true
                   }
                 ];
@@ -298,7 +298,7 @@
                     name: 'hello',
                     markup: this.querySelector('template'),
                     container: document.createElement('div'),
-                    autoAppendContainer: true
+                    autoAppend: true
                   }
                 ];
               }
@@ -666,8 +666,8 @@
           </div>
           <div class="s-docs__right">
             <pre><code class="language-javascript">
-                window.smartComponent.globalState.value = 5; // Calls rendering of course
-                window.smartComponent.globalState.value; // 5
+                window.bamboo.globalState.value = 5; // Calls rendering of course
+                window.bamboo.globalState.value; // 5
             </code></pre>
           </div>
         </div>

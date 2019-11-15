@@ -183,7 +183,7 @@ export default class Bamboo extends HTMLElement {
 
   __childConnectedCallback(event) {
     event.stopPropagation();
-    event.currentTarget.addEventListener('_child.disconnected', this.__childDisconnectedCallback, true);
+    event.target.addEventListener('_child.disconnected', this.__childDisconnectedCallback, true);
 
     const childrenCollection = this._options.get('connectedChildren');
     childrenCollection.upsert(event.detail.id, event.target, event.detail.state);
