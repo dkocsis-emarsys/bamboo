@@ -11,7 +11,7 @@ export default class TestBoundProperties1 extends Bamboo {
     return ['value'];
   }
 
-  static get observedAttributes() {
+  static get watchedAttributes() {
     return ['value'];
   }
 }

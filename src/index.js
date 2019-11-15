@@ -3,6 +3,7 @@ import debounce from './libs/debounce';
 import globalState from './libs/global-state';
 import NodeCollection from './libs/node-collection';
 import Templater from './libs/templater';
+import Internals from './libs/internals';
 
 export default class Bamboo extends HTMLElement {
   constructor(...$) { const _ = super(...$); _.init(); return _; }
@@ -18,7 +19,7 @@ export default class Bamboo extends HTMLElement {
     this.renderCallback = this.renderCallback.bind(this);
 
     this._templater = new Templater(this);
-    this._templater.init(this.template);
+    this._templater.init();
 
     this._options = new State({
       id: Symbol(),
@@ -55,6 +56,16 @@ export default class Bamboo extends HTMLElement {
 
     this.__boundProperties();
     this.__eventHandlers();
+
+    if (this.constructor.formAssociatedElement) {
+      this._internals = new State({ form: null, name: '', value: '' }, this.renderCallback);
+      this.__internalsObject = new Internals(this, this._internals);
+    }
+  }
+
+  static get observedAttributes() {
+    return (this.formAssociatedElement ?
+      ['name', 'value'].concat(this.watchedAttributes) : this.watchedAttributes) || [];
   }
 
   connectedCallback() {
@@ -71,6 +82,8 @@ export default class Bamboo extends HTMLElement {
     this.renderCallback();
 
     this.__notifyParentEvent('_child.connected');
+
+    if (this.constructor.formAssociatedElement) { this.__internalsObject.connect(); }
   }
 
   disconnectedCallback() {

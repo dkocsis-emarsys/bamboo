@@ -7,17 +7,27 @@ class Templater {
     this._mutationObserver = new MutationObserver(this._context.contentChangedCallback.bind(this));
   }
 
-  init(templates) {
-    if (typeof templates === 'object') {
-      templates.forEach(template => this._templates.push(template));
-    } else if (templates) {
+  init() {
+    if (typeof this._context.template === 'object') {
+      this._context.template.forEach(template => this._templates.push(template));
+    } else if (this._context.template) {
       this._templates = [{
         name: '_default',
-        markup: templates,
-        container: this._context,
+        markup: this._context.template,
+        container: this._context.constructor.formAssociatedElement ? document.createElement('div') : this._context,
         autoAppend: true
       }];
     }
+  }
+
+  add(template) {
+    this._templates.push({
+      name: template.name,
+      markup: template.markup,
+      container: template.container,
+      autoAppend: template.autoAppend || false,
+      prepend: template.prepend || false
+    });
   }
 
   parseHTML(content) {
