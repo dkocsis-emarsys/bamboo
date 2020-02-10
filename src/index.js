@@ -63,9 +63,8 @@ export default class Bamboo extends HTMLElement {
     }
   }
 
-  static get observedAttributes() {
-    return (this.formAssociatedElement ?
-      ['name', 'value'].concat(this.watchedAttributes) : this.watchedAttributes) || [];
+  static get formAssociatedAttributes() {
+    return ['name', 'value'];
   }
 
   connectedCallback() {

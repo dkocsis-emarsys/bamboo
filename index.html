@@ -67,12 +67,12 @@
 
         <div class="s-docs__block">
           <div class="s-docs__left">
-            <p class="s-docs__text">Add <b>watchedAttributes</b> getter to the component to listen on a list of attributes.</p>
+            <p class="s-docs__text">Add <b>observedAttributes</b> getter to the component to listen on a list of attributes.</p>
             <blockquote class="s-docs__info">Properties are auto-magically created. If the attribute contains hyphen (-) then the property name will be in camelCase form, e.g.: <b>data-value</b> becomes <b>dataValue</b>.</blockquote>
           </div>
           <div class="s-docs__right">
             <pre><code class="language-javascript">
-              static get watchedAttributes() {
+              static get observedAttributes() {
                 return ['value'];
               }
             </code></pre>
@@ -688,6 +688,10 @@
             <pre><code class="language-javascript">
               static get formAssociatedElement() {
                 return true;
+              }
+
+              static get observedAttributes() {
+                return super.formAssociatedAttributes().concat(['test']); // You have to call formAssociatedAttributes super
               }
             </code></pre>
           </div>
