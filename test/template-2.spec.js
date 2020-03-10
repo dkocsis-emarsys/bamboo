@@ -13,30 +13,31 @@ context('Template (single, with options)', () => {
 
   it('render template with container inside component', () => {
     expect(component.querySelector('.container')).not.to.be.null;
-    expect(component.querySelector('.container').textContent).to.equal('Hello World !');
+    expect(component.querySelector('.container').shadowRoot.textContent).to.equal('Hello World !');
   });
 
   it('render keeps original content in element if container set', () => {
     expect(component.querySelector('.container')).not.to.be.null;
-    expect(component.textContent).to.equal('Hello World !test');
+    expect(component.querySelector('.container').shadowRoot.textContent).to.equal('Hello World !');
+    expect(component.textContent).to.equal('test');
   });
 
   it('render state value inside template', () => {
     const value = 2;
     component.value = value;
 
-    expect(component.querySelector('.container').textContent).to.equal(`Hello World ${value}!`);
+    expect(component.querySelector('.container').shadowRoot.textContent).to.equal(`Hello World ${value}!`);
   });
 
   it('render updated state value inside template', () => {
     let value = 2;
     component.value = value;
 
-    expect(component.querySelector('.container').textContent).to.equal(`Hello World ${value}!`);
+    expect(component.querySelector('.container').shadowRoot.textContent).to.equal(`Hello World ${value}!`);
 
     value = 3;
     component.value = value;
 
-    expect(component.querySelector('.container').textContent).to.equal(`Hello World ${value}!`);
+    expect(component.querySelector('.container').shadowRoot.textContent).to.equal(`Hello World ${value}!`);
   });
 });

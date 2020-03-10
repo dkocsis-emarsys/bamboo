@@ -11,33 +11,33 @@ context('Template (single, no options)', () => {
   });
 
   it('render template inside component', () => {
-    expect(component.textContent).to.equal('Hello World !');
+    expect(component.shadowRoot.textContent).to.equal('Hello World !');
   });
 
   it('render state value inside template', () => {
     const value = 2;
     component.value = value;
 
-    expect(component.textContent).to.equal(`Hello World ${value}!`);
+    expect(component.shadowRoot.textContent).to.equal(`Hello World ${value}!`);
   });
 
   it('render updated state value inside template', () => {
     let value = 2;
     component.value = value;
 
-    expect(component.textContent).to.equal(`Hello World ${value}!`);
+    expect(component.shadowRoot.textContent).to.equal(`Hello World ${value}!`);
 
     value = 3;
     component.value = value;
 
-    expect(component.textContent).to.equal(`Hello World ${value}!`);
+    expect(component.shadowRoot.textContent).to.equal(`Hello World ${value}!`);
   });
 
   it('adds an eventlistener to a button', () => {
     component.value = 0;
-    component.querySelector('[data-handler="increase"]').click();
+    component.shadowRoot.querySelector('[data-handler="increase"]').click();
 
-    expect(component.textContent).to.equal(`Hello World 1!`);
+    expect(component.shadowRoot.textContent).to.equal(`Hello World 1!`);
   });
 
   it('replace inital html content on connect', () => {
@@ -47,6 +47,6 @@ context('Template (single, no options)', () => {
     document.body.appendChild(component);
     component.value = 0;
 
-    expect(component.textContent).to.equal(`Hello World 0!`);
+    expect(component.shadowRoot.textContent).to.equal(`Hello World 0!`);
   });
 });

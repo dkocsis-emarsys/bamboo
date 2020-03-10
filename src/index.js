@@ -31,7 +31,7 @@ export default class Bamboo extends HTMLElement {
       watchGlobalState: false
     }, this.renderCallback);
 
-    this._state = new State(this.constructor.defaultState || {}, this.renderCallback);
+    this._state = new State(this.constructor.initialState || {}, this.renderCallback);
     this._globalState = globalState;
 
     this._options.subscribe('notifyParent', this.__notifyParent.bind(this));
@@ -58,13 +58,19 @@ export default class Bamboo extends HTMLElement {
     this.__eventHandlers();
 
     if (this.constructor.formAssociatedElement) {
-      this._internals = new State({ form: null, name: '', value: '' }, this.renderCallback);
+      this._internals = new State({ form: null, name: '', value: '', disabled: false, readonly: false }, this.renderCallback);
       this.__internalsObject = new Internals(this, this._internals);
     }
   }
 
+  static get observedAttributes() {
+    if (!this.formAssociatedElement) { return []; }
+
+    return [].concat(this.formAssociatedAttributes);
+  }
+
   static get formAssociatedAttributes() {
-    return ['name', 'value'];
+    return ['name', 'value', 'disabled', 'readonly'];
   }
 
   connectedCallback() {

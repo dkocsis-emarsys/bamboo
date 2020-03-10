@@ -13,16 +13,18 @@ context('Template (multiple)', () => {
 
   it('render template with container inside component', () => {
     expect(component.querySelector('.container-1')).not.to.be.null;
-    expect(component.querySelector('.container-1').textContent).to.equal('World');
+    expect(component.querySelector('.container-1').shadowRoot.textContent).to.equal('World');
 
     expect(component.querySelector('.container-2')).not.to.be.null;
-    expect(component.querySelector('.container-2').textContent).to.equal('Hello');
+    expect(component.querySelector('.container-2').shadowRoot.textContent).to.equal('Hello');
   });
 
   it('render keeps original content in element if container set', () => {
     expect(component.querySelector('.container-1')).not.to.be.null;
+    expect(component.querySelector('.container-1').shadowRoot.textContent).to.equal('World');
     expect(component.querySelector('.container-2')).not.to.be.null;
-    expect(component.textContent).to.equal('HellotestWorld');
+    expect(component.querySelector('.container-2').shadowRoot.textContent).to.equal('Hello');
+    expect(component.textContent).to.equal('test');
   });
 
 });

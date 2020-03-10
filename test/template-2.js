@@ -8,8 +8,8 @@ export default class TestTemplate2 extends Bamboo {
   get template() {
     return [{
       name: 'sample',
-      markup: html => html`<div>Hello World ${this._state.get('value')}!</div>`,
-      container: this._templater.parseHTML('<div class="container"></div>'),
+      markup: html => html`Hello World ${this._state.get('value')}!`,
+      root: this._templater.parseHTML('<div class="container"></div>'),
       autoAppend: true,
       prepend: true
     }];

@@ -9,25 +9,38 @@ class Templater {
 
   init() {
     if (typeof this._context.template === 'object') {
-      this._context.template.forEach(template => this._templates.push(template));
+      this._context.template.forEach(template => this.add(template));
     } else if (this._context.template) {
-      this._templates = [{
+      const template = {
         name: '_default',
         markup: this._context.template,
-        container: this._context.constructor.formAssociatedElement ? document.createElement('div') : this._context,
+        root: this._context,
         autoAppend: true
-      }];
+      };
+
+      this.add(template);
     }
   }
 
   add(template) {
-    this._templates.push({
+    const options = {
       name: template.name,
       markup: template.markup,
-      container: template.container,
+      root: template.root || null,
+      useShadow: template.useShadow === false ? false : true,
+      openShadow: template.openShadow === false ? false : true,
       autoAppend: template.autoAppend || false,
       prepend: template.prepend || false
-    });
+    };
+
+    if (options.useShadow && options.autoAppend) {
+      options.root.attachShadow({ mode: options.openShadow ? 'open' : 'closed' });
+      const renderRoot = document.createElement('div');
+      renderRoot.setAttribute('data-render-root', '');
+      options.root.shadowRoot.appendChild(renderRoot);
+    }
+
+    this._templates.push(options);
   }
 
   parseHTML(content) {
@@ -35,18 +48,20 @@ class Templater {
   }
 
   connect() {
-    this._cleanUpContainer();
+    this._cleanUpRoot();
 
     this._templates.forEach(template => {
-      if (template.container && template.container !== this._context) {
-        template.container.setAttribute('data-render-container', '');
+      if (template.root && template.root !== this._context) {
+        if (!template.useShadow) {
+          template.root.setAttribute('data-render-root', '');
+        }
 
         if (!template.autoAppend) { return; }
 
         if (template.prepend) {
-          this._context.insertAdjacentElement('afterbegin', template.container);
+          this._context.insertAdjacentElement('afterbegin', template.root);
         } else {
-          this._context.appendChild(template.container);
+          this._context.appendChild(template.root);
         }
       }
     });
@@ -54,8 +69,8 @@ class Templater {
 
   disconnect() {
     this._templates.forEach(template => {
-      if (template.container && template.container !== this._context) {
-        template.container.parentNode.removeChild(template.container);
+      if (template.root && template.root !== this._context) {
+        template.root.parentNode.removeChild(template.root);
       }
     });
   }
@@ -66,14 +81,14 @@ class Templater {
 
   renderAll() {
     this._templates.forEach(template => {
-      if (template.markup && template.container) {
-        render(template.container, this._render(template.name));
+      if (template.markup && template.root) {
+        render((template.root.shadowRoot && template.root.shadowRoot.querySelector('[data-render-root]')) || template.root, this._render(template.name));
       }
     });
   }
 
-  getContainer(templateName = '_default') {
-    return this._templates.find(template => template.name === templateName).container;
+  getRoot(templateName = '_default') {
+    return this._templates.find(template => template.name === templateName).root;
   }
 
   buildFromTemplate(template) {
@@ -131,13 +146,13 @@ class Templater {
     });
   }
 
-  _cleanUpContainer() {
+  _cleanUpRoot() {
     if (!this._templates.length) { return; };
 
     this._templates.forEach(template => {
-      if (!template.container) { return; }
+      if (!template.root) { return; }
 
-      render(template.container, () => html``);
+      render((template.root.shadowRoot && template.root.shadowRoot.querySelector('[data-render-root]')) || template.root, () => html``);
     });
   }
 }
