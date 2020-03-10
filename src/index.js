@@ -29,9 +29,12 @@ export default class Bamboo extends HTMLElement {
       notifyParent: false,
       watchContent: false,
       watchGlobalState: false
-    }, this.renderCallback);
+    });
+    this._options.subscribe('', this.renderCallback);
 
-    this._state = new State(this.constructor.initialState || {}, this.renderCallback);
+    this._state = new State(this.constructor.initialState || {});
+    this._state.subscribe('', this.renderCallback);
+
     this._globalState = globalState;
 
     this._options.subscribe('notifyParent', this.__notifyParent.bind(this));
@@ -58,7 +61,8 @@ export default class Bamboo extends HTMLElement {
     this.__eventHandlers();
 
     if (this.constructor.formAssociatedElement) {
-      this._internals = new State({ form: null, name: '', value: '', disabled: false, readonly: false }, this.renderCallback);
+      this._internals = new State({ form: null, name: '', value: '', disabled: false, readonly: false });
+      this._internals.subscribe('', this.renderCallback);
       this.__internalsObject = new Internals(this, this._internals);
     }
   }
@@ -205,21 +209,21 @@ export default class Bamboo extends HTMLElement {
 
     const childrenCollection = this._options.get('connectedChildren');
     childrenCollection.upsert(event.detail.id, event.target, event.detail.state);
-    this._options.triggerChange('connectedChildren');
+    this._options.triggerSubscriptionCallbacks('connectedChildren');
   }
 
   __childChangedCallback(event) {
     event.stopPropagation();
     const childrenCollection = this._options.get('connectedChildren');
     childrenCollection.upsert(event.detail.id, event.target, event.detail.state);
-    this._options.triggerChange('connectedChildren');
+    this._options.triggerSubscriptionCallbacks('connectedChildren');
   }
 
   __childDisconnectedCallback(event) {
     event.stopPropagation();
     const childrenCollection = this._options.get('connectedChildren');
     childrenCollection.remove(event.detail.id);
-    this._options.triggerChange('connectedChildren');
+    this._options.triggerSubscriptionCallbacks('connectedChildren');
   }
 
   __watchContent() {

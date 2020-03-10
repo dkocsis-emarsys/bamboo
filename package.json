@@ -1,6 +1,6 @@
 {
   "name": "@dkocsis-emarsys/bamboo",
-  "version": "7.0.1",
+  "version": "8.0.0",
   "description": "Bamboo is a multipurpose, easy to use extension of the base HTMLElement class.",
   "main": "dist/index.js",
   "scripts": {
@@ -33,7 +33,7 @@
     "webpack-dev-server": "3.10.3"
   },
   "dependencies": {
-    "@dkocsis-emarsys/bamboo-state": "2.0.0",
+    "@dkocsis-emarsys/bamboo-state": "3.0.0",
     "lighterhtml": "2.1.0"
   },
   "sideEffects": false

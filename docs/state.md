@@ -13,12 +13,11 @@ this._state.set('dataValue', 1); // Sets value on local state
 this._state.get('dataValue'); // Gets value from local state
 ```
 
-There is some options when you can set on value setting.
+If you don't want to trigger a subscription callback for the value change, set _triggerSubscriptionCallback_ option to false.
 
 ```javascript
 this._state.set('dataValue', 1, {
-  triggerCallback: false, // Won't call the attached callbacks
-  triggerRender: false // Won't call render function
+  triggerSubscriptionCallback: false
 });
 ```
 
@@ -161,8 +160,7 @@ static get boundProperties() {
     {
       name: 'value',
       options: {
-        triggerCallback: false,
-        // triggerRender: false
+        triggerSubsriptionCallback: false
       }
     }
   ];
