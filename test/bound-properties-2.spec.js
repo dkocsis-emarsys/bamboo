@@ -15,13 +15,8 @@ context('Bound properties to state (complex)', () => {
     expect(component.textContent).to.equal('attribute');
   });
 
-  it('won\'t trigger callback', () => {
-    component.triggerCallback = 'nope';
-    expect(component.textContent).to.equal('');
-  });
-
-  it('won\'t trigger render', () => {
-    component.triggerRender = 'nope';
+  it('won\'t trigger subscriptionCallback', () => {
+    component.triggerSubscriptionCallback = 'nope';
     expect(component.textContent).not.to.equal('nope');
   });
 
