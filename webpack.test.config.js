@@ -9,7 +9,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './test/dist'),
     filename: 'index.js',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
+    publicPath: '/test/dist/'
   },
   module: {
     rules: [

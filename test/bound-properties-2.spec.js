@@ -16,7 +16,12 @@ context('Bound properties to state (complex)', () => {
   });
 
   it('won\'t trigger subscriptionCallback', () => {
-    component.triggerSubscriptionCallback = 'nope';
+    component.valueWithoutCallback = 'nope';
+    expect(component.textContent).not.to.equal('nope');
+  });
+
+  it('won\'t trigger renderCallback', () => {
+    component.valueWithoutRender = 'nope';
     expect(component.textContent).not.to.equal('nope');
   });
 

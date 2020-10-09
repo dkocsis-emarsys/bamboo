@@ -21,6 +21,22 @@ this._state.set('dataValue', 1, {
 });
 ```
 
+You can skip rendering too just set _triggeRenderCallback_ option to false.
+
+```javascript
+this._state.set('dataValue', 1, {
+  triggerRenderCallback: false
+});
+```
+
+You can also set default values here.
+
+```javascript
+this._state.set('dataValue', 1, {
+  defaultValue: 2
+});
+```
+
 A transform function can be also passed as value. Perfect for incrementing/decrementing values.
 
 ```javascript
@@ -107,7 +123,7 @@ this._state.getDefaultValue('dataValue'); // Gets 1
 
 ## Initial value
 
-Initial values are values on the state, when a component created. It's different from default value because it's not a value you can fall back later.
+Initial values are values on the state, when a component created. It also sets the default values.
 
 ```javascript
 static get initialState() {
@@ -115,6 +131,9 @@ static get initialState() {
     value: 10
   };
 }
+
+this._state.get('value'); // Gets 10
+this._state.getDefaultValue('value'); // Also gets 10
 ```
 
 ## Binding properties to state

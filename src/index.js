@@ -16,7 +16,7 @@ export default class Bamboo extends HTMLElement {
 
     this.contentChangedCallback = this.contentChangedCallback.bind(this);
     this.childrenChangedCallback = debounce(this.childrenChangedCallback.bind(this));
-    this.renderCallback = this.renderCallback.bind(this);
+    this._renderCallback = this._renderCallback.bind(this);
 
     this._templater = new Templater(this);
     this._templater.init();
@@ -30,10 +30,10 @@ export default class Bamboo extends HTMLElement {
       watchContent: false,
       watchGlobalState: false
     });
-    this._options.subscribe('', this.renderCallback);
+    this._options.subscribe('', this._renderCallback);
 
     this._state = new State(this.constructor.initialState || {});
-    this._state.subscribe('', this.renderCallback);
+    this._state.subscribe('', this._renderCallback);
 
     this._globalState = globalState;
 
@@ -62,7 +62,7 @@ export default class Bamboo extends HTMLElement {
 
     if (this.constructor.formAssociatedElement) {
       this._internals = new State({ form: null, name: '', value: '', disabled: false, readonly: false });
-      this._internals.subscribe('', this.renderCallback);
+      this._internals.subscribe('', this._renderCallback);
       this.__internalsObject = new Internals(this, this._internals);
     }
   }
@@ -88,7 +88,7 @@ export default class Bamboo extends HTMLElement {
 
     this._templater.connect();
 
-    this.renderCallback();
+    this._renderCallback();
 
     this.__notifyParentEvent('_child.connected');
 
@@ -108,8 +108,14 @@ export default class Bamboo extends HTMLElement {
     this[transformedName] = newValue;
   }
 
-  renderCallback() {
-    if (this.__connected) { this._templater.renderAll(); }
+  _renderCallback(value, name, options = {}) {
+    if (this.__connected && (options.triggerRenderCallback === undefined || options.triggerRenderCallback)) {
+      this._templater.renderAll();
+
+      if (this.renderCallback) {
+        this.renderCallback(value, name, options);
+      }
+    }
   }
 
   contentChangedCallback() {}
@@ -244,7 +250,7 @@ export default class Bamboo extends HTMLElement {
 
     if (globalState) {
       const globalStateKey = globalState === true ? '' : globalState;
-      this.__watchGlobalStateSubscription = this._globalState.subscribe(globalStateKey, this.renderCallback);
+      this.__watchGlobalStateSubscription = this._globalState.subscribe(globalStateKey, this._renderCallback);
     } else if (this.__watchGlobalStateSubscription) {
       this.__watchGlobalStateSubscription.unsubscribe();
     }
