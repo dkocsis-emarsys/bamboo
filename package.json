@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@dkocsis-emarsys/bamboo-state": "4.2.1",
-    "lighterhtml": "4.1.1"
+    "uhtml": "2.6.2"
   },
   "sideEffects": false
 }

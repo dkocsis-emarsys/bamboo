@@ -1,4 +1,4 @@
-import { html, svg, render } from 'lighterhtml';
+import { html, svg, render } from 'uhtml';
 
 class Templater {
   constructor(context) {
