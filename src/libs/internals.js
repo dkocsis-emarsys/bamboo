@@ -1,5 +1,3 @@
-import { html, svg, render } from 'lighterhtml';
-
 class Internals {
   constructor(context, state) {
     this._context = context;
@@ -56,10 +54,10 @@ class Internals {
       markup: html => html`
         <input
           type="hidden"
-          name="${this._state.get('name')}"
-          value="${this._state.get('value')}"
-          disabled="${this._state.get('disabled') ? true : null}"
-          readonly="${this._state.get('readonly') ? '' : null}"
+          name=${this._state.get('name')}
+          value=${this._state.get('value')}
+          ?disabled=${this._state.get('disabled')}
+          ?readonly=${this._state.get('readonly')}
         >
       `,
       root: document.createElement('div'),
