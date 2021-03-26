@@ -1,4 +1,9 @@
-context('Template (single, no options)', () => {
+import { expect } from 'chai';
+
+import TestTemplate1 from './template-1';
+customElements.define('test-template-1', TestTemplate1);
+
+describe('Template (single, no options)', () => {
   let component;
 
   beforeEach(() => {
@@ -7,37 +12,37 @@ context('Template (single, no options)', () => {
   });
 
   afterEach(() => {
-    component.parentNode.removeChild(component);
+    component.remove();
   });
 
   it('render template inside component', () => {
-    expect(component.shadowRoot.textContent).to.equal('Hello World !');
+    expect(component.shadowRoot.textContent.trim()).to.equal('Hello World 0!');
   });
 
   it('render state value inside template', () => {
     const value = 2;
     component.value = value;
 
-    expect(component.shadowRoot.textContent).to.equal(`Hello World ${value}!`);
+    expect(component.shadowRoot.textContent.trim()).to.equal(`Hello World ${value}!`);
   });
 
   it('render updated state value inside template', () => {
     let value = 2;
     component.value = value;
 
-    expect(component.shadowRoot.textContent).to.equal(`Hello World ${value}!`);
+    expect(component.shadowRoot.textContent.trim()).to.equal(`Hello World ${value}!`);
 
     value = 3;
     component.value = value;
 
-    expect(component.shadowRoot.textContent).to.equal(`Hello World ${value}!`);
+    expect(component.shadowRoot.textContent.trim()).to.equal(`Hello World ${value}!`);
   });
 
   it('adds an eventlistener to a button', () => {
     component.value = 0;
     component.shadowRoot.querySelector('[data-handler="increase"]').click();
 
-    expect(component.shadowRoot.textContent).to.equal(`Hello World 1!`);
+    expect(component.shadowRoot.textContent.trim()).to.equal(`Hello World 1!`);
   });
 
   it('replace inital html content on connect', () => {
@@ -47,6 +52,6 @@ context('Template (single, no options)', () => {
     document.body.appendChild(component);
     component.value = 0;
 
-    expect(component.shadowRoot.textContent).to.equal(`Hello World 0!`);
+    expect(component.shadowRoot.textContent.trim()).to.equal(`Hello World 0!`);
   });
 });

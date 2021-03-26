@@ -1,13 +1,12 @@
 {
   "name": "@dkocsis-emarsys/bamboo",
-  "version": "8.2.0",
+  "version": "8.3.0",
   "description": "Bamboo is a multipurpose, easy to use extension of the base HTMLElement class.",
   "main": "dist/index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --mode development --port 27960",
+    "start": "webpack serve --hot --mode development --port 27960",
     "build": "webpack --mode production",
-    "test": "webpack-dev-server --hot --mode development --port 27960 --config ./webpack.test.config.js",
-    "build:test": "webpack --mode production --config ./webpack.test.config.js"
+    "test": "mocha --require ./happy-dom.js --require @babel/register \"./test/**/*.spec.js\""
   },
   "author": "dkocsis-emarsys",
   "license": "ISC",
@@ -19,6 +18,7 @@
     "@babel/core": "7.13.10",
     "@babel/node": "7.13.12",
     "@babel/preset-env": "7.13.12",
+    "@babel/register": "^7.13.8",
     "babel-loader": "8.2.2",
     "browserslist": "4.16.3",
     "chai": "4.3.4",
@@ -31,8 +31,7 @@
     "webpack-dev-server": "3.11.2"
   },
   "dependencies": {
-    "@dkocsis-emarsys/bamboo-state": "4.2.1",
+    "@dkocsis-emarsys/bamboo-state": "4.2.3",
     "uhtml": "2.6.2"
-  },
-  "sideEffects": false
+  }
 }

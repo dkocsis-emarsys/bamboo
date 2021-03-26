@@ -1,6 +1,10 @@
 import Bamboo from '../src';
 
 export default class TestTemplate1 extends Bamboo {
+  static get initialState() {
+    return { value: 0 };
+  }
+
   static get boundProperties() {
     return ['value'];
   }

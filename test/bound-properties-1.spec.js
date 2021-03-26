@@ -1,4 +1,9 @@
-context('Bound properties to state (simple)', () => {
+import { expect } from 'chai';
+
+import TestBoundProperties1 from './bound-properties-1';
+customElements.define('test-bound-properties-1', TestBoundProperties1);
+
+describe('Bound properties to state (simple)', () => {
   let component;
 
   beforeEach(() => {
@@ -7,7 +12,7 @@ context('Bound properties to state (simple)', () => {
   });
 
   afterEach(() => {
-    component.parentNode.removeChild(component);
+    component.remove();
   });
 
   it('sets state on attribute set', () => {

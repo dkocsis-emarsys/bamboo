@@ -1,9 +1,9 @@
 import State from '@dkocsis-emarsys/bamboo-state';
-import debounce from './libs/debounce';
-import globalState from './libs/global-state';
-import NodeCollection from './libs/node-collection';
-import Templater from './libs/templater';
-import Internals from './libs/internals';
+import debounce from './libs/debounce.js';
+import globalState from './libs/global-state.js';
+import NodeCollection from './libs/node-collection.js';
+import Templater from './libs/templater.js';
+import Internals from './libs/internals.js';
 
 export default class Bamboo extends HTMLElement {
   constructor(...$) { const _ = super(...$); _.init(); return _; }

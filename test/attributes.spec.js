@@ -1,4 +1,9 @@
-context('Attributes', () => {
+import { expect } from 'chai';
+
+import TestAttributes from './attributes';
+customElements.define('test-attributes', TestAttributes);
+
+describe('Attributes', () => {
   let component;
 
   beforeEach(() => {
@@ -7,7 +12,7 @@ context('Attributes', () => {
   });
 
   afterEach(() => {
-    component.parentNode.removeChild(component);
+    component.remove();
   });
 
   it('sets attribute on component and get corrent value from property', () => {

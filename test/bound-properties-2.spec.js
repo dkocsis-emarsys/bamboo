@@ -1,4 +1,9 @@
-context('Bound properties to state (complex)', () => {
+import { expect } from 'chai';
+
+import TestBoundProperties2 from './bound-properties-2';
+customElements.define('test-bound-properties-2', TestBoundProperties2);
+
+describe('Bound properties to state (complex)', () => {
   let component;
 
   beforeEach(() => {
@@ -7,7 +12,7 @@ context('Bound properties to state (complex)', () => {
   });
 
   afterEach(() => {
-    component.parentNode.removeChild(component);
+    component.remove();
   });
 
   it('use different name in state', () => {
