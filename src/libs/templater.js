@@ -70,7 +70,7 @@ class Templater {
   disconnect() {
     this._templates.forEach(template => {
       if (template.root && template.root !== this._context) {
-        template.root.parentNode.removeChild(template.root);
+        template.root.remove(template.root);
       }
     });
   }
